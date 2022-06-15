@@ -18,7 +18,8 @@ provider "azurerm" {
 #Creating resource group
 
 module "resource_group"{
-  source   = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\resource_group"
+  source = "github.com/rajeshsvrn/Azure-Terraform-Module.git/modules/resource_group/"
+  #source   = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\resource_group"
   resource_group_name = "${var.resource_group_name}"
   location = "${var.location}"
 }
@@ -26,7 +27,8 @@ module "resource_group"{
 #Creating Virtual Network
 
 module "virtual_network" {
-  source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\virtual_network"
+  source = "github.com/rajeshsvrn/Azure-Terraform-Module.git/modules/virtual_network/"
+  #source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\virtual_network"
   location = "${var.location}"
   resource_group_name = "${module.resource_group.name}"
 }
@@ -34,7 +36,8 @@ module "virtual_network" {
 #Creating Virtual Machine
 
 module "virtual_machine" {
-  source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\virtual_machine"
+  source = "github.com/rajeshsvrn/Azure-Terraform-Module.git/modules/virtual_machine/"
+  #source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\virtual_machine"
   location = "${var.location}"
   vnetwork_interface_id = "${module.virtual_network.nic}"
   resource_group_name = "${module.resource_group.name}"
@@ -46,7 +49,9 @@ module "virtual_machine" {
 #Creating Storage account
 
 module "storage_account" {
-  source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\storage_account"
+
+  source = "github.com/rajeshsvrn/Azure-Terraform-Module.git/modules/storage_account/"
+  #source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\storage_account"
   location = "${var.location}"
   resource_group_id = "${module.resource_group.id}"
   resource_group_name = "${module.resource_group.name}"
@@ -56,14 +61,16 @@ module "storage_account" {
 #Creating Unique id
 
 module "unique_id" {
-  source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\unique_id"
+  source = "github.com/rajeshsvrn/Azure-Terraform-Module.git/modules/unique_id/"
+  #source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\unique_id"
   resource_group_name = "${module.resource_group.name}"
 }
 
 #Creating Keyvault
 
 module "key_vault" {
-  source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\key_vault"
+  source = "github.com/rajeshsvrn/Azure-Terraform-Module.git/modules/key_vault/"
+  #source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\key_vault"
   location = "${var.location}"
   resource_group_name = "${module.resource_group.name}"
   tenant_id = "${var.tenant_id}"
@@ -73,7 +80,8 @@ module "key_vault" {
 #Creating Database
 
 module "database" {
-  source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\database"
+  source = "github.com/rajeshsvrn/Azure-Terraform-Module.git/modules/database/"
+  #source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\database"
   location = "${var.location}"
   resource_group_name = "${module.resource_group.name}"
   vmip = "${module.virtual_network.vmip}"

@@ -8,4 +8,4 @@ C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\.terraform\\providers\\re
 *.tfstate.*
 
 #sensitive data
-*.tfvars
+
