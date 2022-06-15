@@ -30,6 +30,9 @@ module "virtual_network" {
   location = "${var.location}"
   resource_group_name = "${module.resource_group.name}"
 }
+
+#Creating Virtual Machine
+
 module "virtual_machine" {
   source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\virtual_machine"
   location = "${var.location}"
@@ -40,6 +43,8 @@ module "virtual_machine" {
   #admin_username = "${var.admin_username}"
 }
 
+#Creating Storage account
+
 module "storage_account" {
   source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\storage_account"
   location = "${var.location}"
@@ -48,10 +53,14 @@ module "storage_account" {
   uid = "${module.unique_id.uid}"
 }
 
+#Creating Unique id
+
 module "unique_id" {
   source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\unique_id"
   resource_group_name = "${module.resource_group.name}"
 }
+
+#Creating Keyvault
 
 module "key_vault" {
   source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\key_vault"
@@ -60,6 +69,8 @@ module "key_vault" {
   tenant_id = "${var.tenant_id}"
   object_id = "${var.object_id}"
 }
+
+#Creating Database
 
 module "database" {
   source = "C:\\Users\\Anonymous\\Desktop\\Azure-Terraform-Module\\modules\\database"
